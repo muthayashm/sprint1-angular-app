@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Product } from '../models/Product';
 import { ProductService } from '../services/product.service';
 
@@ -10,16 +9,16 @@ import { ProductService } from '../services/product.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
-  
+
   constructor(private productService: ProductService) {}
 
   getProducts(): void {
     this.productService.getProducts().subscribe((product) => {
-      console.log(product.products);
+      this.products = product.products;
     });
   }
 
   ngOnInit(): void {
-    this.getProducts()
+    this.getProducts();
   }
 }
