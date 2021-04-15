@@ -1,34 +1,53 @@
 <main class="col-9 col-t-8 col-m-12">
-    <div class="caption col-12 col-t-12 col-m-12">
-        <h4>Authentication</h4>
+  <div class="caption col-12 col-t-12 col-m-12">
+    <h4>Authentication</h4>
+  </div>
+
+  <div class="row"></div>
+
+  <div class="mainBorder col-t-12 col-m-12">
+
+    <div class="authenticateBox col-12 col-t-12 col-m-12">
+      <h4>Create an Account</h4>
+      Please enter your email address to create an account.
+
+      <p>
+        <label for="newUserEmail">Email address</label>
+        <input type="email" name="newUserEmail" id="newUserEmail" [(ngModel)]="newUser.email">
+      </p>
+
+      <p>
+        <label for="newUserPassword">Password</label>
+        <input type="password" name="newUserPassword" id="newUserPassword" [(ngModel)]="newUser.password">
+      </p>
+
+      <p *ngIf="registerMessage">
+        <span style="color: tomato;">{{registerMessage}}</span>
+      </p>
+
+      <button type="submit" (click)="register()">Create an account</button>
     </div>
 
-    <div class="row"></div>
-    
-    <div class="mainBorder col-t-12 col-m-12">
-        
-        <div class="authenticateBox col-12 col-t-12 col-m-12">
-            <h4>Create an Account</h4>
-            Please enter your email address to create an account.
-            <p><label for="newUserEmail">Email address</label>
-                <input type="email" name="newUserEmail" id="newUserEmail"></p>
-            <button type="submit">Create an account</button>
-        </div>
-                            
-        <div class="authenticateBox col-12 col-t-12 col-m-12">
-            <h4>Already Registered?</h4>
-            <p>
-                <label for="userEmail">Email address</label>
-                <input type="email" name="userEmail" id="userEmail">
-            </p>
-            <p>
-                <label for="userPassword">Password</label>
-                <input type="email" name="newUserEmail" id="userPassword">
-            </p>
-            <a href="#">Forgot your password?</a>
-            <button type="submit">Authenticate</button>
-        </div>
-        
+    <div class="authenticateBox col-12 col-t-12 col-m-12">
+      <h4>Already Registered?</h4>
+      <p>
+        <label for="userEmail">Email address</label>
+        <input type="email" name="userEmail" id="userEmail" [(ngModel)]="user.email">
+      </p>
+
+      <p>
+        <label for="userPassword">Password</label>
+        <input type="password" name="newUserEmail" id="userPassword" [(ngModel)]="user.password">
+      </p>
+
+      <p *ngIf="loginMessage">
+        <span style="color: tomato;">{{loginMessage}}</span>
+      </p>
+
+      <a href="#">Forgot your password?</a>
+      <button type="submit" (click)="login(user)">Authenticate</button>
     </div>
+
+  </div>
 
 </main>
