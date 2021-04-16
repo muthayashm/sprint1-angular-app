@@ -1,0 +1,30 @@
+<main class="col-9 col-t-8 col-m-12">
+  <div class="caption col-12 col-t-12 col-m-12">
+    <h4>{{product.name}}</h4>
+  </div>
+
+  <div class="row"></div>
+
+  <div class="cupcakeDiv col-12 col-t-12 col-m-12">
+    <div class="cupcakeImg">
+      <img id="img1" [src]="product.imageLink" [alt]="product.imageLink" />
+      <img id="img2" [src]="product.imageLink" [alt]="product.imageLink" />
+      <img id="img3" [src]="product.imageLink" [alt]="product.imageLink" />
+      <img id="img4" [src]="product.imageLink" [alt]="product.imageLink" />
+    </div>
+    <div class="cupcakeText">
+      {{product.description}}
+      <em>
+        <strike style="color: tomato;" *ngIf="product.discount">{{product.price | currency:'INR'}}</strike><span
+          style="margin-left: 10px; font-size: larger;">{{calculateDiscount(product.price,product.discount) | currency:'INR' }}</span>
+      </em>
+      <p>
+        <label for="quantity">Number of pieces</label>
+        <input type="number" min="6" max="50" value="6" /><br />
+      </p>
+      <button type="submit">Add to cart</button><br />
+      <a href="#">Add to my wishlist</a>
+    </div>
+  </div>
+
+</main>

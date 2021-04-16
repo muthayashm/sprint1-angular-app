@@ -11,8 +11,11 @@
       <h3>{{product.name}}</h3>
       {{product.description}}
     </div>
-    <h4>{{product.price | currency:'INR'}}</h4>
-    <a class="link" href="mochaCupcake.html">View</a>
+    <h4>
+      <strike style="color: tomato;"
+        *ngIf="product.discount">{{product.price | currency:'INR'}}</strike>{{calculateDiscount(product.price,product.discount) | currency:'INR' }}
+    </h4>
+    <a class="link" routerLink="/view/{{product.id}}">View</a>
     <a class="link" href="#">Add to cart</a>
   </div>
 
