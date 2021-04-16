@@ -1,0 +1,25 @@
+<main class="col-9 col-t-8 col-m-12">
+  <div class="caption col-12 col-t-12 col-m-12">
+    <h4 *ngIf="searchKey!=='all'">{{products.length}} result(s) found for " {{searchKey | uppercase}} "</h4>
+    <h4 *ngIf="searchKey==='all'">All Products</h4>
+  </div>
+
+  <div class="row"></div>
+
+  <div class="cupcakeDiv col-3 col-t-6 col-m-6" *ngFor="let product of products">
+    <img [src]="product.imageLink" [alt]="product.name" />
+    <div class="cupcakeText">
+      <h3>{{product.name}}</h3>
+      {{product.description}}
+    </div>
+    <h4>
+      <strike style="color: tomato;"
+        *ngIf="product.discount">{{product.price | currency:'INR'}}</strike>{{calculateDiscount(product.price,product.discount) | currency:'INR' }}
+    </h4>
+    <a class="link" routerLink="/view/{{product.id}}">View</a>
+    <a class="link" href="#">Add to cart</a>
+  </div>
+
+  <div class="row"></div>
+
+</main>

@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CartComponent } from './cart/cart.component';
+import { SearchComponent } from './search/search.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +19,10 @@ import { JwtModule } from '@auth0/angular-jwt';
     LoginComponent,
     HomeComponent,
     MyAccountComponent,
+    ProductDetailsComponent,
+    CartComponent,
+    SearchComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

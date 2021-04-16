@@ -5,7 +5,7 @@
       The Cupcake Maker
     </div>
     <a href="#">Contact</a>
-    <a href="#">Cart(0)</a>
+    <a href="cart">Cart(0)</a>
     <a href="login">Login</a>
   </header>
 
@@ -19,9 +19,10 @@
       <li><a href="#">CONTACTS</a></li>
       <li><a href="#">BLOG</a></li>
       <li class="searchBox1">
-        <input type="text" placeholder="Search" id="searchBox1" />
+        <input type="text" placeholder="Search by Name" id="searchBox1" [(ngModel)]="searchKey"
+          (keyup.enter)="search()" />
       </li>
-      <li class="icon">
+      <li class=" icon">
         <a href="javascript:void(0);"><i class="material-icons w3-large">menu</i></a>
       </li>
     </ul>
@@ -32,16 +33,16 @@
       <div class="aside1">
         <h3>CATEGORIES</h3>
         <ul>
-          <li><a href="#">Gifts/Combos</a></li>
-          <li><a href="#">Premium Cupcakes</a></li>
-          <li><a href="#">Birthday Cupcakes</a></li>
-          <li><a href="#">Custom Cupcakes</a></li>
-          <li><a href="#">Cartoon Cupcakes</a></li>
-          <li><a href="#">Superhero Cupcakes</a></li>
-          <li><a href="#">Cheesecake Cupcakes</a></li>
-          <li><a href="#">Holiday Cupcakes</a></li>
-          <li><a href="#">Eggless Cupcakes</a></li>
-          <li><a href="#">Midnight Delivery</a></li>
+          <li><a routerLink="/category/gifts">Gifts/Combos</a></li>
+          <li><a routerLink="/category/premium">Premium Cupcakes</a></li>
+          <li><a routerLink="/category/birthday">Birthday Cupcakes</a></li>
+          <li><a routerLink="/category/custom">Custom Cupcakes</a></li>
+          <li><a routerLink="/category/cartoon">Cartoon Cupcakes</a></li>
+          <li><a routerLink="/category/superhero">Superhero Cupcakes</a></li>
+          <li><a routerLink="/category/cheesecake">Cheesecake Cupcakes</a></li>
+          <li><a routerLink="/category/holiday">Holiday Cupcakes</a></li>
+          <li><a routerLink="/category/eggless">Eggless Cupcakes</a></li>
+          <li><a routerLink="/category/midnight">Midnight Delivery</a></li>
         </ul>
       </div>
 
