@@ -1,13 +1,14 @@
 interface ProductResponse {
-	id: number;
-	name:string,
-	description:string,
-	imageLink:string,
-	price:number,
-	category:string,
-	discount:number
+  id: number;
+  name: string;
+  description: string;
+  imageLink: string;
+  price: number;
+  category: string;
+  discount: number;
+  isNew: boolean;
 }
 
-export interface Response{
-	products : ProductResponse[]
+export interface Response {
+  products: ProductResponse[];
 }
