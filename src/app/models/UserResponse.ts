@@ -1,4 +1,4 @@
-export interface User {
+interface UserResponse {
   email: string;
   password?: string;
   fullName?:string
@@ -10,3 +10,7 @@ export interface User {
 	zipCode?:number
   lastLoginOn?:Date
 }
+
+export interface UResponse {
+    user: UserResponse[];
+  }
