@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UResponse } from '../models/UserResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,14 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('access-token');
+    localStorage.removeItem('email');
+  }
+
+  myaccount(email: string): Observable<UResponse> {
+    return this.http.get<UResponse>(
+      `${this.BASE_URL}/user/${email}`,
+      this.OPTIONS
+    );
   }
 
   public getLoginStatus(): boolean {
