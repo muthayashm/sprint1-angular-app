@@ -114,12 +114,13 @@ nav ul li.searchBox1 {
 #searchBox1 {
   display: none;
   box-sizing: border-box;
-  width: 200px;
+  width: 170px;
   border-radius: 5px;
   padding: 5px 25px 5px;
-  background-image: url(./assets/icons/search_icon.png);
+  background-image: url(./assets/icons/search.png);
   background-repeat: no-repeat;
-  background-size: 25px;
+  background-size: 20px;
+  background-position: center left;
 }
 
 .icon {
@@ -417,7 +418,7 @@ aside {
   border: 1px solid #291A1D;
   border-radius: 5px;
   padding: 5px 25px 5px;
-  background-image: url(./assets/icons/search_icon.png);
+  background-image: url(./assets/icons/search.png);
   background-repeat: no-repeat;
   background-size: 25px;
   margin: 10px 5px;

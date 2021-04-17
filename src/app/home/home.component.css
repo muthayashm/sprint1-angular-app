@@ -14,7 +14,7 @@
 .cupcakeDiv {
   background-color: #FFFFFF;
   border: 2px solid #FFFFFF;
-  height: 340px;
+  height: 360px;
   text-align: center;
   font-size: 85%;
   padding: 5px 10px 3px;
@@ -28,14 +28,16 @@
   transform: scale(1.1);
 }
 
-.cupcakeDiv img {
-  height: 120px;
-  transition: 600ms;
+.cupcakeDiv .new {
+  height: 40px;
+  width: 40px;
+  float: left;
+  z-index: 2px;
+  position: absolute;
 }
 
-.cupcakeDiv img:hover {
+.cupcakeDiv img {
   height: 120px;
-  transform: scale(1.1);
   transition: 600ms;
 }
 
@@ -106,4 +108,44 @@
   text-indent: 80px;
   line-height: 23px;
   text-align: justify;
+}
+
+/* For %Off */
+.sale-perc {
+  background-color: #D9534F;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  width: fit-content;
+  color: #fff;
+  text-align: center;
+  border-radius: 25px;
+  float: right;
+  position: relative;
+  margin: 2px 0px;
+  animation: blink 1s alternate-reverse infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: .25;
+  }
+
+
+  50% {
+    opacity: .5;
+  }
+
+  75% {
+    opacity: .75;
+  }
+
+
+  100% {
+    opacity: 1;
+  }
 }

@@ -33,11 +33,14 @@ export class SearchComponent implements OnInit {
         this.products = product.products;
       });
     } else {
-      this.productService
-        .getProducts(this.searchKey, false)
-        .subscribe((product) => {
+      this.productService.getProducts(this.searchKey, false).subscribe(
+        (product) => {
           this.products = product.products;
-        });
+        },
+        (err) => {
+          this.products = [];
+        }
+      );
     }
   }
 
