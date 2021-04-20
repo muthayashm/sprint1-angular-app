@@ -8,7 +8,7 @@
 
     <div class="cart">
       <div class="products">
-        <div class="product" *ngFor="let p of products$ | async">
+        <div class="product" *ngFor="let p of products">
           <img [src]="p.imageLink" [alt]="p.name">
           <div class="product-info">
             <h3 class="product-name">{{p.name}}</h3>
@@ -42,7 +42,7 @@
         <span>You Save</span>
         <span>Rs. 100</span>
       </p>
-      <a href="#">Proceed to checkout</a>
+      <a (click)="checkout()">Proceed to checkout</a>
     </div>
   </div>
 </main>
