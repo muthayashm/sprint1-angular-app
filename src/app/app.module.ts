@@ -15,6 +15,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { StoreModule } from '@ngrx/store';
 import { cartReducer } from './reducers/cart.reducer';
+import { SharedService } from './services/shared.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { cartReducer } from './reducers/cart.reducer';
     }),
     StoreModule.forRoot({ products: cartReducer }),
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
