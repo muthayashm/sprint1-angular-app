@@ -22,7 +22,7 @@
         *ngIf="product.discount">{{product.price | currency:'INR'}}</strike>{{calculateDiscount(product.price,product.discount) | currency:'INR'}}
     </h4>
     <a class="link" routerLink="/view/{{product.id}}">View</a>
-    <a class="link" href="#">Add to cart</a>
+    <button class="link" (click)="addToCart(product)">Add to cart</button>
   </div>
 
   <div class="row"></div>

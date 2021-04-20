@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/Product';
-import { ProductService } from '../services/product.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { addProduct } from 'src/app/actions/cart.action';
+import { Product } from '../../models/Product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +12,11 @@ import { ProductService } from '../services/product.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
+  products$: Observable<Product[]>
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private store: Store<{ products: Product[] }>) {
+    this.products$ = store.select('products')
+  }
 
   getProducts(): void {
     this.productService.getProducts().subscribe((product) => {
@@ -25,6 +31,11 @@ export class HomeComponent implements OnInit {
       const discountPrice = price - (price * discount) / 100;
       return discountPrice;
     }
+  }
+
+  addToCart(p: Product): void {
+    console.log(p.name);
+    this.store.dispatch(addProduct({ product: p }))
   }
 
   ngOnInit(): void {

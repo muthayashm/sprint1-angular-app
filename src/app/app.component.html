@@ -5,19 +5,19 @@
       The Cupcake Maker
     </div>
     <a href="#">Contact</a>
-    <a href="cart">Cart(0)</a>
-    <a [href]="ButtonRoute">{{ButtonTitle}}</a>
+    <a routerLink="cart">Cart ({{(products$|async)?.length}})</a>
+    <a [routerLink]="ButtonRoute">{{ButtonTitle}}</a>
   </header>
 
   <nav>
     <ul>
-      <li><a href="home">HOME</a></li>
-      <li><a href="#">NEW PRODUCTS</a></li>
-      <li><a href="#">SPECIALS</a></li>
-      <li><a href="myaccount">MY ACCOUNT</a></li>
-      <li><a href="#">SITEMAP</a></li>
-      <li><a href="#">CONTACTS</a></li>
-      <li><a href="#">BLOG</a></li>
+      <li><a routerLink="home">HOME</a></li>
+      <li><a routerLink="#">NEW PRODUCTS</a></li>
+      <li><a routerLink="#">SPECIALS</a></li>
+      <li><a routerLink="myaccount">MY ACCOUNT</a></li>
+      <li><a routerLink="#">SITEMAP</a></li>
+      <li><a routerLink="#">CONTACTS</a></li>
+      <li><a routerLink="#">BLOG</a></li>
       <li class="searchBox1">
         <input type="text" placeholder="Search by Name" id="searchBox1" [(ngModel)]="searchKey"
           (keyup.enter)="search()" />

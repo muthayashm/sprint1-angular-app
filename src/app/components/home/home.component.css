@@ -14,7 +14,7 @@
 .cupcakeDiv {
   background-color: #FFFFFF;
   border: 2px solid #FFFFFF;
-  height: 360px;
+  height: 380px;
   text-align: center;
   font-size: 85%;
   padding: 5px 10px 3px;
@@ -25,7 +25,7 @@
   border: 2px solid #E34C77;
   border-radius: 10px;
   transition: 400ms;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .cupcakeDiv .new {
@@ -33,12 +33,13 @@
   width: 40px;
   float: left;
   z-index: 2px;
-  position: absolute;
+  position: relative;
 }
 
 .cupcakeDiv img {
   height: 120px;
   transition: 600ms;
+  position: relative;
 }
 
 .cupcakeDiv h4 strike {

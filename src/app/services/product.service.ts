@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from '../models/ProductResponse';
 import { Observable } from 'rxjs';
+import { Product } from '../models/Product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
 
   getProducts(searchKey?: string, isCategory?: boolean): Observable<Response> {
     let URL = '';

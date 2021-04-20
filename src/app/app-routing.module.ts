@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { CartComponent } from './cart/cart.component';
-import { CategoryComponent } from './category/category.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { MyAccountComponent } from './my-account/my-account.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { SearchComponent } from './search/search.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CategoryComponent } from './components/category/category.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
