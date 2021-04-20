@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Product } from '../models/Product';
-import { ProductService } from '../services/product.service';
+import { Product } from '../../models/Product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-search',
@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   searchProducts(): void {
     if (this.searchKey === 'all') {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UResponse } from '../models/UserResponse';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(
@@ -23,12 +24,40 @@ export class UserService {
     );
   }
 
-  register(email: string, password: string): Observable<any> {
+  register(user: User): Observable<any> {
     return this.http.post<any>(
       `${this.BASE_URL}/user`,
-      { email, password },
+      {
+        email: user.email,
+        password: user.password,
+        fullName: user.fullName,
+        mobileNumber: user.mobileNumber,
+        address: user.address,
+        city: user.city,
+        state: user.state,
+        country: user.country,
+        zipCode: user.zipCode
+      },
       this.OPTIONS
     );
+  }
+
+  update(user: User): Observable<any> {
+    let email = localStorage.getItem('email');
+    return this.http.put<any>(
+      `${this.BASE_URL}/user/${email}`,
+      {
+        email: user.email,
+        fullName: user.fullName,
+        mobileNumber: user.mobileNumber,
+        address: user.address,
+        city: user.city,
+        state: user.state,
+        country: user.country,
+        zipCode: user.zipCode
+      },
+      this.OPTIONS
+    )
   }
 
   logout() {

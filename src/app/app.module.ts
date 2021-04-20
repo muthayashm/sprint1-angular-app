@@ -2,17 +2,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { MyAccountComponent } from './my-account/my-account.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { CartComponent } from './cart/cart.component';
-import { SearchComponent } from './search/search.component';
-import { CategoryComponent } from './category/category.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { CartComponent } from './components/cart/cart.component';
+import { SearchComponent } from './components/search/search.component';
+import { CategoryComponent } from './components/category/category.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { cartReducer } from './reducers/cart.reducer';
 
 @NgModule({
   declarations: [
@@ -40,8 +42,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
         allowedDomains: ['localhost:3128'],
       },
     }),
+    StoreModule.forRoot({ products: cartReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

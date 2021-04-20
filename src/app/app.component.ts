@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Product } from './models/Product';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -11,9 +14,13 @@ export class AppComponent {
   title = 'Sweetcherry';
   ButtonTitle = '';
   ButtonRoute = '';
+  products$: Observable<Product[]>
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, private store: Store<{ products: Product[] }>) {
     this.init();
+
+    this.products$ = this.store.select('products');
+
     router.events.subscribe((value) => {
       if (value instanceof NavigationEnd) {
         if (value.url === '/logout') {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { User } from '../models/User';
-import { UserService } from '../services/user.service';
+import { User } from '../../models/User';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
   loginMessage?: String;
   registerMessage?: String;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   login(user: User): void {
     this.userService.login(user.email, user.password).subscribe(
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   register(): void {
     this.userService
-      .register(this.newUser.email, this.newUser.password)
+      .register(this.newUser)
       .subscribe(
         (data) => {
           console.log('success', data.token);
