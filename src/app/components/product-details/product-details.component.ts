@@ -29,12 +29,7 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  calculateDiscount(price: number, discount: number = 0): number {
-    if (discount === 0) {
-      return price;
-    } else {
-      const discountPrice = price - (price * discount) / 100;
-      return discountPrice;
-    }
+  calculateDiscount(price: number, discount: number): number {
+    return this.productService.calculateDiscount(price, discount);
   }
 }

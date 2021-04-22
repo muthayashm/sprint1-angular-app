@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 import { CartComponent } from './cart.component';
 
@@ -8,9 +10,10 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartComponent ]
+      declarations: [CartComponent],
+      providers: [ActivatedRoute, SharedService]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

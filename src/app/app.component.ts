@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { CartItem } from './models/CartItem';
 import { Product } from './models/Product';
 import { UserService } from './services/user.service';
 
@@ -14,12 +15,13 @@ export class AppComponent {
   title = 'Sweetcherry';
   ButtonTitle = '';
   ButtonRoute = '';
-  products$: Observable<Product[]>
+
+  cartItems: CartItem[] = [];
 
   constructor(private router: Router, private userService: UserService, private store: Store<{ products: Product[] }>) {
     this.init();
 
-    this.products$ = this.store.select('products');
+    this.cartItems = JSON.parse(localStorage.getItem('cart'));
 
     router.events.subscribe((value) => {
       if (value instanceof NavigationEnd) {

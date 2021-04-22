@@ -28,13 +28,15 @@
 .products {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .product {
   display: flex;
   width: 48%;
+  min-width: 350px;
   height: 250px;
+  min-height: 240px;
   overflow: hidden;
   border: 2px solid silver;
   border-radius: 10px;

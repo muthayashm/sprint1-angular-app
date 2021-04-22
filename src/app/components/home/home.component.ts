@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { addProduct } from 'src/app/actions/cart.action';
-import { SharedService } from 'src/app/services/shared.service';
+import { CartItem } from 'src/app/models/CartItem';
 import { Product } from '../../models/Product';
 import { ProductService } from '../../services/product.service';
 
@@ -13,13 +10,14 @@ import { ProductService } from '../../services/product.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
-  products$: Observable<Product[]>
-  private singleProduct;
+  cartItems: CartItem[] = [];
 
-  constructor(private productService: ProductService,
-    private store: Store<{ products: Product[] }>,
-    private sharedService: SharedService) {
-    this.products$ = store.select('products')
+  constructor(private productService: ProductService) {
+    if (localStorage.getItem('cart') === null) {
+      console.log("CART_CLASS:", this.cartItems);
+    } else {
+      this.cartItems = JSON.parse(localStorage.getItem('cart'))
+    }
   }
 
   getProducts(): void {
@@ -28,29 +26,31 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  calculateDiscount(price: number, discount: number = 0): number {
-    if (discount === 0) {
-      return price;
-    } else {
-      const discountPrice = price - (price * discount) / 100;
-      return discountPrice;
-    }
+  calculateDiscount(price: number, discount: number): number {
+    return this.productService.calculateDiscount(price, discount);
   }
 
   addToCart(p: Product): void {
-    //console.log(p.name);
-    //this.store.dispatch(addProduct({ product: p }))
 
-    this.singleProduct = this.products.filter(product => {
-      return product.id === p.id;
-    });
+    let result = this.cartItems.find((data) => data.product.id === p.id)
 
-    // this.cartItems.push(this.singleProduct[0]);
+    if (result === null || result === undefined) {
+      this.cartItems.push({ product: p, quantity: 1 })
+      this.syncCart()
+    } else {
+      let index = this.cartItems.indexOf(result)
+      this.cartItems[index].quantity += 1;
+      this.syncCart()
+    }
 
-    this.sharedService.addProductToCart(this.singleProduct[0]);
   }
 
   ngOnInit(): void {
     this.getProducts();
+  }
+
+  async syncCart() {
+    let _cart = JSON.stringify(this.cartItems)
+    await localStorage.setItem('cart', _cart);
   }
 }
