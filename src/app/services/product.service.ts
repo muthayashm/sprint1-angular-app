@@ -22,7 +22,7 @@ export class ProductService {
       URL = `${this.BASE_URL}/product/?searchKey=${searchKey}`;
     } else {
       console.log('ALL');
-      URL = '${this.BASE_URL}/product';
+      URL = `${this.BASE_URL}/product`;
     }
     const OPTIONS = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
