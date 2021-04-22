@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Product } from 'src/app/models/Product';
-import { SharedService } from 'src/app/services/shared.service';
+import { CartItem } from 'src/app/models/CartItem';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,38 +9,31 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  products?: Product[] = [];
-  products$: Observable<Product[]>
+  cartItems: CartItem[]
+
+  totalPrice: number = 0;
+  totalItems: number = 0;
+  discPrice: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute,
-    private store: Store<{ products: Product[] }>,
-    private sharedService: SharedService) {
-    this.products$ = store.select('products');
-    this.products = JSON.parse(localStorage.getItem('state'))
-    //console.log(this.products)
-  }
-
-  ngOnInit(): void {
-    console.log("ITEMS IN SERVICE CART: ", this.sharedService.getCartProducts());
-  }
-
-  getProducts() {
-    this.products$.subscribe((data) => {
-      this.products = data;
-      console.log(this.products);
-    })
-  }
-
-  calculateDiscount(price: number, discount: number = 0): number {
-    if (discount === 0) {
-      return price;
-    } else {
-      const discountPrice = price - (price * discount) / 100;
-      return discountPrice;
+    private productService: ProductService) {
+    this.cartItems = JSON.parse(localStorage.getItem('cart'))
+    for (let item of this.cartItems) {
+      this.totalPrice += (item.product.price * item.quantity);
+      this.discPrice += (this.calculateDiscount(item.product.price, item.product.discount) * item.quantity);
+      this.totalItems += item.quantity
     }
   }
 
+  ngOnInit(): void {
+
+  }
+
+  calculateDiscount(price: number, discount: number): number {
+    return this.productService.calculateDiscount(price, discount);
+  }
+
   checkout() {
-    console.log(localStorage.getItem('state'));
+
   }
 }

@@ -22,7 +22,7 @@ export class MyAccountComponent implements OnInit {
         city: data.user[0].city,
         state: data.user[0].state,
         country: data.user[0].country,
-        zipCode: data.user[0].zipCode,
+        zipCode: data.user[0].zipCode
       }
     })
   }

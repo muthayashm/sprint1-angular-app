@@ -5,7 +5,7 @@
       The Cupcake Maker
     </div>
     <a href="#">Contact</a>
-    <a routerLink="cart">Cart ({{(products$|async)?.length}})</a>
+    <a routerLink="cart">Cart ({{(cartItems)?.length}})</a>
     <a [routerLink]="ButtonRoute">{{ButtonTitle}}</a>
   </header>
 
