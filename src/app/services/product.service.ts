@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from '../models/ProductResponse';
 import { Observable } from 'rxjs';
-import { Product } from '../models/Product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  BASE_URL = 'https://sweetcherry.herokuapp.com';
 
   constructor(private http: HttpClient) { }
 
@@ -16,13 +16,13 @@ export class ProductService {
     if (searchKey && isCategory) {
       console.log('Category');
       //localhost:3128/product/?searchKey=lemon
-      URL = `http://localhost:3128/product/?category=${searchKey}`;
+      URL = `${this.BASE_URL}/product/?category=${searchKey}`;
     } else if (searchKey && !isCategory) {
       console.log('Search');
-      URL = `http://localhost:3128/product/?searchKey=${searchKey}`;
+      URL = `${this.BASE_URL}/product/?searchKey=${searchKey}`;
     } else {
       console.log('ALL');
-      URL = 'http://localhost:3128/product';
+      URL = '${this.BASE_URL}/product';
     }
     const OPTIONS = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -31,7 +31,7 @@ export class ProductService {
   }
 
   getProductDetails(id) {
-    const URL = `http://localhost:3128/product/?id=${id}`; //localhost:3128/product/?id=10001
+    const URL = `${this.BASE_URL}/product/?id=${id}`;
     const OPTIONS = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
