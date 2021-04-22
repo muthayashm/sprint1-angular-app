@@ -8,7 +8,8 @@ import { User } from '../models/User';
   providedIn: 'root',
 })
 export class UserService {
-  BASE_URL = 'http://localhost:3128';
+  BASE_URL = 'https://sweetcherry.herokuapp.com';
+  //BASE_URL = 'http://localhost:3128';
 
   OPTIONS = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
